@@ -1,0 +1,7 @@
+extends layout
+block content
+  h3=title
+    form#formFindNote(name="findNote",method="post",action="/findNote")
+      input#inputNoteSubject(type="text", placeholder="Note Subject", name="noteSubject")
+      button#btnSubmit(type="submit") submit
+

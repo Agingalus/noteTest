@@ -1,0 +1,39 @@
+extends layout
+block content
+  script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")
+  script(language='JavaScript').
+    function updateNote() {
+      var oldSubject =  document.getElementById('oldSubject').innerHTML;
+      var whatSubject = document.getElementById('Subject').value;
+      var whatDescription = document.getElementById('Description').value;
+      var whatPriority = document.getElementById('Priority').value;
+      var what_id = document.getElementById('_id').value;
+      // sending all 3 values in json object, even though only using email
+      dataObject = { "Subject": whatSubject, "Description": whatDescription,"Priority": whatPriority, _id: what_id};
+      //dataObject = { "email": whoEmail};
+      $.ajax({
+        url:'/updateNote/' + oldSubject,  // putting the userSubject in the URL for the PUT method
+        method:'PUT',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(dataObject),
+        success: function(result) {
+                alert("success");
+                 window.location.href = '/noteList/';
+            }
+
+      });
+    }
+
+
+  h2.
+    User Details
+  p Current Subject
+  p#oldSubject #{noteDetail.Subject}
+  input(id='Subject', Subject='editSubject',value='#{noteDetail.Subject}')
+  input(id='Description', Subject='editDescription',value='#{noteDetail.Description}')
+  input(id='Priority', Subject='editPriority',value='#{noteDetail.Priority}')
+  input(id='_id', Subject='edit_id',value='#{noteDetail._id}')
+    
+  input(type='button', value='Update', onclick='updateNote()')    
+

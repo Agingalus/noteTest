@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    
+  body
+      ul
+        li
+          a(href='/') Welcome
+        li
+          a(href='/noteList/') Note List
+        li
+          a(href='/newNote/') Add New Note
+        li
+          a(href='/noteBySubject/') Get Note details
+        li
+          a(href='/admin/') admin path 
+        li
+          a(href='/admin/gettime/') Get Time
+        li
+          a(href='/echo/dog') echo 
+    block content

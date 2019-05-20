@@ -1,0 +1,8 @@
+extends layout
+block content
+  h1=title
+    form#formAddUser(name="addNote",method="post",action="/addNote")
+      input#inputNoteSubject(type="text", placeholder="Subject", name="Subject")
+      input#inputNotePriority(type="text", placeholder="Priority", name="Priority")
+      input#inputNoteDescription(type="text", placeholder="Description", name="Description")
+      button#btnSubmit(type="submit") submit
